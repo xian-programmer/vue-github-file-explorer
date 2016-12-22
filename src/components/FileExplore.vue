@@ -31,7 +31,11 @@
 		            this.files = data;
 		          }
 		        );
-		      }
+		      },
+		    changePath: function(path) {
+		        this.path = '/' + path;
+		        this.getFiles();
+		     }
 		},
 		computed:{
 			sortedFiles: function() {
@@ -63,6 +67,7 @@
 	      }
 	    },
 	    created:function(){
+	    	console.log(1111);
 			if (this.username && this.repo) this.getFiles();
 		}
 	}
@@ -89,7 +94,7 @@
 							</div>
 							<div class="directory" v-if="file.type === 'dir'">
 				                <span class="octicon octicon-file-directory"></span>
-				                <a href="#" > {{ file.name }}</a>
+				                <a href="#" @click="changePath(file.path)"> {{ file.name }}</a>
 				              </div>
 						</td>
 						<td>
