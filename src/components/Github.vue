@@ -1,17 +1,27 @@
 <script>
+    import FileExplore from './FileExplore.vue'
 	export default {
 		name:'Github',
 		data: function(){
 			return {
-				fullRepoName:''
+				fullRepoName:'',
+				username:'',
+				repo:''
 			}
 		},
 		methods:{
 			changeRepo:function(){
+				
+				this.username= this.fullRepoName.split('\/').shift();
+				this.repo = this.fullRepoName.split('\/').pop();
 				console.group("Github's Data");
-				console.log(111);
+				console.log("username",this.username);
+				console.log("repo",this.repo);
 				console.groupEnd("Github's Data");
 			}
+		},
+		components:{
+			FileExplore
 		}
 	}
 </script>
@@ -33,6 +43,8 @@
 				</div>
 				<button class="btn btn-primary">获&nbsp;取</button>
 			</form>
+			<hr>
+			<file-explore :username="username" :repo="repo"></file-explore>
 		</div>
 	</div>
 </template>
