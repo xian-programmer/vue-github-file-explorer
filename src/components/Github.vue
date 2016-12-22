@@ -5,6 +5,13 @@
 			return {
 				fullRepoName:''
 			}
+		},
+		methods:{
+			changeRepo:function(){
+				console.group("Github's Data");
+				console.log(111);
+				console.groupEnd("Github's Data");
+			}
 		}
 	}
 </script>
