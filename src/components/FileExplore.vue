@@ -63,7 +63,6 @@
 	      }
 	    },
 	    created:function(){
-	    	console.log(1111);
 			if (this.username && this.repo) this.getFiles();
 		}
 	}
@@ -82,8 +81,20 @@
 				</thead>
 				<tbody>
 					<tr v-for="file in sortedFiles">
-						<td></td>
-						<td></td>
+						<td>
+							<div class="file" v-if="file.type==='file'">
+								<span class="octicon octicon-file-text">
+									<a href="#">{{file.name}}</a>
+								</span>
+							</div>
+							<div class="directory" v-if="file.type === 'dir'">
+				                <span class="octicon octicon-file-directory"></span>
+				                <a href="#" > {{ file.name }}</a>
+				              </div>
+						</td>
+						<td>
+							
+						</td>
 					</tr>
 				</tbody>
 			</table>
